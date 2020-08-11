@@ -6,7 +6,8 @@ import aiohttp
 
 async def check_product(session, url):
     async with session.get(url) as response:
-        soup = BeautifulSoup(await response.text, 'html.parser')
+        content = await response.text()
+        soup = BeautifulSoup(content, 'html.parser')
         if soup.find("p", class_="out-of-stock"):
             print(f"Out of stock {url}")
         else:
