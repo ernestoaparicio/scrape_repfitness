@@ -32,11 +32,8 @@ async def check_product(session, url):
     async with session.get(url) as response:
         content = await response.text()
         soup = BeautifulSoup(content, 'html.parser')
-        if soup.find("p", class_="out-of-stock"):
-            return f"Out of stock {url}"
-
-        else:
-            return f"In stock!!! {url}"
+        if not soup.find("p", class_="out-of-stock"):
+            return f"In stock {url}"
 
 
 async def check_all_products(urls):
@@ -47,9 +44,14 @@ async def check_all_products(urls):
                 check_product(session, url))
             tasks.append(task)
         tasks_completed = await asyncio.gather(*tasks, return_exceptions=True)
-        msg = " \n".join(tasks_completed)
-        print(msg)
-        gmail_send_email(msg)
+
+        print(tasks_completed)
+
+        for task_completed in tasks_completed:
+            if task_completed is not None:
+                msg = " \n".join(tasks_completed)
+                gmail_send_email(msg)
+                break
 
 
 if __name__ == "__main__":
