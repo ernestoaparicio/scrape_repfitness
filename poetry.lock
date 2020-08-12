@@ -89,6 +89,14 @@ version = "0.4.3"
 
 [[package]]
 category = "main"
+description = "A hierarchical, easy-to-use, powerful configuration module for Python"
+name = "config"
+optional = false
+python-versions = "*"
+version = "0.5.0.post0"
+
+[[package]]
+category = "main"
 description = "Internationalized Domain Names in Applications (IDNA)"
 name = "idna"
 optional = false
@@ -233,6 +241,14 @@ version = "1.9.6"
 
 [[package]]
 category = "main"
+description = "SSL wrapper for socket objects (2.3, 2.4, 2.5 compatible)"
+name = "ssl"
+optional = false
+python-versions = "*"
+version = "1.16"
+
+[[package]]
+category = "main"
 description = "Backported and Experimental Type Hints for Python 3.5+"
 marker = "python_version < \"3.8\""
 name = "typing-extensions"
@@ -291,7 +307,7 @@ docs = ["sphinx", "jaraco.packaging (>=3.2)", "rst.linker (>=1.9)"]
 testing = ["jaraco.itertools", "func-timeout"]
 
 [metadata]
-content-hash = "7eec308759b5500d60df32d310d7ca3699b73f8c232935263223138ff2655b6a"
+content-hash = "0f7fa911111f113cae900a3e6bf0d8a42a69214cdb5d40c0c87f816ffd1641d5"
 lock-version = "1.0"
 python-versions = "^3.7"
 
@@ -338,6 +354,10 @@ chardet = [
 colorama = [
     {file = "colorama-0.4.3-py2.py3-none-any.whl", hash = "sha256:7d73d2a99753107a36ac6b455ee49046802e59d9d076ef8e47b61499fa29afff"},
     {file = "colorama-0.4.3.tar.gz", hash = "sha256:e96da0d330793e2cb9485e9ddfd918d456036c7149416295932478192f4436a1"},
+]
+config = [
+    {file = "config-0.5.0.post0-py2.py3-none-any.whl", hash = "sha256:73ea4a8064facc61fcba736be71996aaa7f38a564166a284628b8e8c53444f2e"},
+    {file = "config-0.5.0.post0.zip", hash = "sha256:c7e48f9820758a4ddc23ae3bf10b118959f6fd06018be9eb0e1d9d5a3b227de1"},
 ]
 idna = [
     {file = "idna-2.10-py2.py3-none-any.whl", hash = "sha256:b97d804b1e9b523befed77c48dacec60e6dcb0b5391d57af6a65a312a90648c0"},
@@ -401,6 +421,9 @@ six = [
 soupsieve = [
     {file = "soupsieve-1.9.6-py2.py3-none-any.whl", hash = "sha256:feb1e937fa26a69e08436aad4a9037cd7e1d4c7212909502ba30701247ff8abd"},
     {file = "soupsieve-1.9.6.tar.gz", hash = "sha256:7985bacc98c34923a439967c1a602dc4f1e15f923b6fcf02344184f86cc7efaa"},
+]
+ssl = [
+    {file = "ssl-1.16.tar.gz", hash = "sha256:ac21156fee6aee9eb8d765bbb16f5f49492d81ff4b22f7b8fc001d2251120930"},
 ]
 typing-extensions = [
     {file = "typing_extensions-3.7.4.2-py2-none-any.whl", hash = "sha256:f8d2bd89d25bc39dabe7d23df520442fa1d8969b82544370e03d88b5a591c392"},
