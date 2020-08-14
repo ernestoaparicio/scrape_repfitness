@@ -49,7 +49,8 @@ async def check_all_products(urls):
 
         for task_completed in tasks_completed:
             if task_completed is not None:
-                msg = " \n".join(tasks_completed)
+                msg = " \n".join(
+                    [task if task is not None else "None" for task in tasks_completed])
                 gmail_send_email(msg)
                 break
 
@@ -61,7 +62,8 @@ if __name__ == "__main__":
             "https://www.repfitness.com/strength-equipment/power-racks/rep-power-rack",
             "https://www.repfitness.com/strength-equipment/strength-training/benches/rep-fb-5000-competition-flat-bench",
             "https://www.repfitness.com/strength-equipment/strength-training/benches/rep-ab3000-fid-adj-bench",
-            "https://www.repfitness.com/strength-equipment/strength-training/benches/rep-ab-3100-fi-bench"
+            "https://www.repfitness.com/strength-equipment/strength-training/benches/rep-ab-3100-fi-bench",
+            "https://www.repfitness.com/in-stock-items/rep-premium-leather-lifting-belt"
             ]
     start_time = time.time()
     asyncio.get_event_loop().run_until_complete(
