@@ -1,8 +1,10 @@
+import datetime
 import smtplib
 import ssl
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
+import pytz
 from bs4 import BeautifulSoup
 import asyncio
 import time
@@ -26,6 +28,8 @@ def gmail_send_email(text):
         server.login(config.GMAIL_EMAIL, config.GMAIL_PW)
         server.sendmail(config.GMAIL_EMAIL,
                         config.RECEIVER_EMAIL, message.as_string())
+        print(
+            f"Email sent to {config.RECEIVER_EMAIL}")
 
 
 async def check_product(session, url):
@@ -51,8 +55,10 @@ async def check_all_products(urls):
             if task_completed is not None:
                 msg = " \n".join(
                     [task if task is not None else "None" for task in tasks_completed])
-                gmail_send_email(msg)
-                break
+                try:
+                    gmail_send_email(msg)
+                except Exception as e:
+                    print(f"Unable to send email {e.__class__}")
 
 
 if __name__ == "__main__":
