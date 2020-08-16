@@ -1,7 +1,9 @@
 README.rst
 setup.py
 scrape_repfitness/__init__.py
+scrape_repfitness/config.py
 scrape_repfitness/main.py
+scrape_repfitness/scrape_repfitness.log
 scrape_repfitness.egg-info/PKG-INFO
 scrape_repfitness.egg-info/SOURCES.txt
 scrape_repfitness.egg-info/dependency_links.txt

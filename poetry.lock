@@ -241,14 +241,6 @@ version = "1.9.6"
 
 [[package]]
 category = "main"
-description = "SSL wrapper for socket objects (2.3, 2.4, 2.5 compatible)"
-name = "ssl"
-optional = false
-python-versions = "*"
-version = "1.16"
-
-[[package]]
-category = "main"
 description = "Backported and Experimental Type Hints for Python 3.5+"
 marker = "python_version < \"3.8\""
 name = "typing-extensions"
@@ -307,7 +299,7 @@ docs = ["sphinx", "jaraco.packaging (>=3.2)", "rst.linker (>=1.9)"]
 testing = ["jaraco.itertools", "func-timeout"]
 
 [metadata]
-content-hash = "0f7fa911111f113cae900a3e6bf0d8a42a69214cdb5d40c0c87f816ffd1641d5"
+content-hash = "cca772cfc5f52ebe214a8afb4d3a745db8fe48f7fc7ac645951e398492449553"
 lock-version = "1.0"
 python-versions = "^3.7"
 
@@ -421,9 +413,6 @@ six = [
 soupsieve = [
     {file = "soupsieve-1.9.6-py2.py3-none-any.whl", hash = "sha256:feb1e937fa26a69e08436aad4a9037cd7e1d4c7212909502ba30701247ff8abd"},
     {file = "soupsieve-1.9.6.tar.gz", hash = "sha256:7985bacc98c34923a439967c1a602dc4f1e15f923b6fcf02344184f86cc7efaa"},
-]
-ssl = [
-    {file = "ssl-1.16.tar.gz", hash = "sha256:ac21156fee6aee9eb8d765bbb16f5f49492d81ff4b22f7b8fc001d2251120930"},
 ]
 typing-extensions = [
     {file = "typing_extensions-3.7.4.2-py2-none-any.whl", hash = "sha256:f8d2bd89d25bc39dabe7d23df520442fa1d8969b82544370e03d88b5a591c392"},
