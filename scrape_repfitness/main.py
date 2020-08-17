@@ -27,7 +27,7 @@ def gmail_send_email(text):
     with smtplib.SMTP_SSL("smtp.gmail.com", port, context=context) as server:
         server.login(config.GMAIL_EMAIL, config.GMAIL_PW)
         server.sendmail(config.GMAIL_EMAIL,
-                        config.RECEIVER_EMAIL, message.as_string())
+                        config.RECEIVER_EMAIL.split(','), message.as_string())
         print(
             f"Email sent to {config.RECEIVER_EMAIL}")
 
