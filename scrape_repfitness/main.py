@@ -69,7 +69,8 @@ if __name__ == "__main__":
             "https://www.repfitness.com/strength-equipment/strength-training/benches/rep-fb-5000-competition-flat-bench",
             "https://www.repfitness.com/strength-equipment/strength-training/benches/rep-ab3000-fid-adj-bench",
             "https://www.repfitness.com/strength-equipment/strength-training/benches/rep-ab-3100-fi-bench",
-            "https://www.repfitness.com/in-stock-items/rep-premium-leather-lifting-belt"
+            "https://www.repfitness.com/rep-power-push-sled",
+            "https://www.repfitness.com/free-standing-landmine"
             ]
     start_time = time.time()
     asyncio.get_event_loop().run_until_complete(
