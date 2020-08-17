@@ -38,6 +38,8 @@ async def check_product(session, url):
         soup = BeautifulSoup(content, 'html.parser')
         if not soup.find("p", class_="out-of-stock"):
             return f"In stock {url}"
+        else:
+            return f"Out of stock {url}"
 
 
 async def check_all_products(urls):
@@ -49,16 +51,16 @@ async def check_all_products(urls):
             tasks.append(task)
         tasks_completed = await asyncio.gather(*tasks, return_exceptions=True)
 
-        print(tasks_completed)
-
         for task_completed in tasks_completed:
-            if task_completed is not None:
+            print({task_completed})
+            if task_completed.startswith('In stock'):
                 msg = " \n".join(
                     [task if task is not None else "None" for task in tasks_completed])
                 try:
                     gmail_send_email(msg)
                 except Exception as e:
                     print(f"Unable to send email {e.__class__}")
+                break
 
 
 if __name__ == "__main__":
@@ -70,7 +72,8 @@ if __name__ == "__main__":
             "https://www.repfitness.com/strength-equipment/strength-training/benches/rep-ab3000-fid-adj-bench",
             "https://www.repfitness.com/strength-equipment/strength-training/benches/rep-ab-3100-fi-bench",
             "https://www.repfitness.com/rep-power-push-sled",
-            "https://www.repfitness.com/free-standing-landmine"
+            "https://www.repfitness.com/free-standing-landmine",
+            "https://www.repfitness.com/in-stock-items/rep-premium-leather-lifting-belt"
             ]
     start_time = time.time()
     asyncio.get_event_loop().run_until_complete(
