@@ -1,6 +1,7 @@
 import datetime
 import smtplib
 import ssl
+from twilio.rest import Client
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
@@ -32,6 +33,14 @@ def gmail_send_email(text):
             f"Email sent to {config.RECEIVER_EMAIL}")
 
 
+def twilio_send_sms(to_number, text):
+    client = Client(config.TWILIO_SID, config.TWILIO_TOKEN)
+    client.api.account.messages.create(
+        to=to_number,
+        from_=config.TWILIO_PHONE_NUMBER,
+        body=text)
+
+
 async def check_product(session, url):
     async with session.get(url) as response:
         content = await response.text()
@@ -57,9 +66,13 @@ async def check_all_products(urls):
                 msg = " \n".join(
                     [task if task is not None else "None" for task in tasks_completed])
                 try:
-                    gmail_send_email(msg)
+                    # gmail_send_email(msg)
+                    if config.SMS_RECIPIENTS is not None:
+                        for number in config.SMS_RECIPIENTS.split(","):
+                            twilio_send_sms(
+                                number, "Repfitness in stock, check your email sucka.")
                 except Exception as e:
-                    print(f"Unable to send email {e.__class__}")
+                    print(f"Unable to send message {e.__class__}")
                 break
 
 
@@ -72,8 +85,8 @@ if __name__ == "__main__":
             "https://www.repfitness.com/strength-equipment/strength-training/benches/rep-ab3000-fid-adj-bench",
             "https://www.repfitness.com/strength-equipment/strength-training/benches/rep-ab-3100-fi-bench",
             "https://www.repfitness.com/rep-power-push-sled",
-            "https://www.repfitness.com/free-standing-landmine",
-            "https://www.repfitness.com/in-stock-items/rep-premium-leather-lifting-belt"
+            "https://www.repfitness.com/free-standing-landmine"
+            # "https://www.repfitness.com/in-stock-items/rep-premium-leather-lifting-belt"
             ]
     start_time = time.time()
     asyncio.get_event_loop().run_until_complete(

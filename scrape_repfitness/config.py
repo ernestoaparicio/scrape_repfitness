@@ -3,3 +3,7 @@ import os
 GMAIL_EMAIL = os.getenv('GMAIL_EMAIL')
 GMAIL_PW = os.getenv('GMAIL_PW')
 RECEIVER_EMAIL = os.getenv('RECEIVER_EMAIL')
+TWILIO_SID = os.getenv('TWILIO_SID')
+TWILIO_TOKEN = os.getenv('TWILIO_TOKEN')
+TWILIO_PHONE_NUMBER = os.getenv('TWILIO_PHONE_NUMBER')
+SMS_RECIPIENTS = os.getenv('SMS_RECIPIENTS')
